@@ -204,5 +204,5 @@ PRODUCT_LOCALES += en_US
 
 $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, hardware/ti/omap3/Android.mk)
-$(call inherit-product-if-exists, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product-if-exists, vendor/aokp/configs/common_phone.mk)
 $(call inherit-product-if-exists, vendor/motorola/omap34com/device-vendor.mk)
