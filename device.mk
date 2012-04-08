@@ -21,6 +21,7 @@
 # Everything in this directory will become public
 
 DEVICE_PREBUILT := device/motorola/omap34com/prebuilt
+DEVICE_PACKAGE_OVERLAYS := device/motorola/omap34com/overlay
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -135,6 +136,8 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PREBUILT)/etc/sysctl.conf:system/etc/sysctl.conf \
 	$(DEVICE_PREBUILT)/etc/init.d/12scheduler:system/etc/init.d/12scheduler \
 	$(DEVICE_PREBUILT)/etc/init.d/13kernel:system/etc/init.d/13kernel \
+	$(DEVICE_PREBUILT)/etc/init.d/14multitouch:system/etc/init.d/14multitouch \
+	$(DEVICE_PREBUILT)/xbin/multitouch:system/xbin/multitouch \
 	$(DEVICE_PREBUILT)/media/bootanimation.zip:system/media/bootanimation.zip
 
 
@@ -153,6 +156,14 @@ PRODUCT_COPY_FILES += \
 	frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
+
+# wifi
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PREBUILT)/etc/wifi/fw_tiwlan_ap.bin:system/etc/wifi/fw_tiwlan_ap.bin \
+	$(DEVICE_PREBUILT)/etc/wifi/fw_wlan1271.bin:system/etc/wifi/fw_wlan1271.bin \
+	$(DEVICE_PREBUILT)/etc/wifi/tiwlan.ini:system/etc/wifi/tiwlan.ini \
+	$(DEVICE_PREBUILT)/etc/wifi/tiwlan_ap.ini:system/etc/wifi/tiwlan_ap.ini \
+	$(DEVICE_PREBUILT)/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # these need to be here for the installer, just put them here for now
 PRODUCT_COPY_FILES += \
@@ -187,12 +198,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.kernel.android.ril=yes \
 	ro.product.multi_touch_enabled=true \
 	ro.media.dec.jpeg.memcap=20000000 \
-	ro.ril.ignore.linkiperror=true \
 	ro.setupwizard.enable_bypass=1 \
 	ro.setupwizard.mode=OPTIONAL \
 	ro.telephony.call_ring.delay=1000 \
 	ro.telephony.call_ring.multiple=false \
 	ro.kernel.android.checkjni=0 \
+	ro.HOME_APP_ADJ=1 \
 	dalvik.vm.checkjni=false \
 	dalvik.vm.dexopt-data-only=1
 
